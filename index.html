@@ -1,0 +1,1966 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Adi Raushan - Frontend Developer specializing in UI/UX implementation, design systems, and pixel-perfect development for agencies.">
+    <meta name="keywords"
+        content="Frontend Developer, UI/UX Developer, React Developer, Design Systems, White-Label Development, Agency Partner">
+    <meta name="author" content="Adi Raushan">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://adiraushan.com/">
+    <meta property="og:title" content="Adi Raushan | Frontend Developer for Agencies">
+    <meta property="og:description"
+        content="Pixel-perfect frontend development. Design-to-code accuracy. Component systems. Ready for white-label collaboration.">
+    <meta property="og:image" content="https://adiraushan.com/profile.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Adi Raushan | Frontend Developer for Agencies">
+    <meta property="twitter:description"
+        content="Pixel-perfect frontend development. Design-to-code accuracy. Component systems. Ready for white-label collaboration.">
+    <meta property="twitter:image" content="https://adiraushan.com/profile.png">
+
+    <title>Adi Raushan | Frontend Developer for Agencies</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Favicon & Icons -->
+    <link rel="icon" type="image/png" href="ar logo 2.png">
+    <link rel="apple-touch-icon" href="ar logo 2.png">
+
+    <!-- SEO & Accessibility -->
+    <link rel="canonical" href="https://adiraushan.com/">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="robots" content="index, follow">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Adi Raushan",
+      "url": "https://adiraushan.com",
+      "image": "https://adiraushan.com/profile.png",
+      "sameAs": [
+        "https://linkedin.com/in/yourprofile",
+        "https://twitter.com/yourhandle",
+        "https://github.com/yourusername"
+      ],
+      "jobTitle": "Frontend Developer",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Freelance"
+      }
+    }
+    </script>
+
+    <style>
+        :root {
+            --bg: #ffffff;
+            --surface: #f8fafc;
+            --accent: #16a34a;
+            --accent-dark: #15803d;
+            --text: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Floating Navbar */
+        .floating-nav {
+            position: fixed;
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 32px);
+            max-width: 1100px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(22, 163, 74, 0.1);
+            border-radius: 60px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(22, 163, 74, 0.05);
+            z-index: 100;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .floating-nav::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            border-radius: 3px;
+            opacity: 0;
+            transition: opacity 0.3s, width 0.3s;
+        }
+
+        .floating-nav.scrolled {
+            top: 12px;
+            background: rgba(255, 255, 255, 0.95);
+            border-color: rgba(22, 163, 74, 0.15);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(22, 163, 74, 0.1);
+            border-radius: 20px;
+        }
+
+        .floating-nav.scrolled::after {
+            opacity: 1;
+            width: 60%;
+        }
+
+        /* Nav Links */
+        .nav-link {
+            position: relative;
+            padding: 8px 0;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 2px;
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), #4ade80, #22c55e);
+            background-size: 200% 100%;
+            animation: gradientShift 3s linear infinite;
+            z-index: 101;
+            transform-origin: left;
+            transform: scaleX(0);
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 200% 50%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-dots {
+                display: none;
+            }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.98));
+            backdrop-filter: blur(20px);
+            z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu .mobile-link {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-menu.active .mobile-link {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mobile-menu.active .mobile-link:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .mobile-menu.active .mobile-link:nth-child(2) {
+            transition-delay: 0.15s;
+        }
+
+        .mobile-menu.active .mobile-link:nth-child(3) {
+            transition-delay: 0.2s;
+        }
+
+        .mobile-menu.active .mobile-link:nth-child(4) {
+            transition-delay: 0.25s;
+        }
+
+        .mobile-menu.active .mobile-link:nth-child(5) {
+            transition-delay: 0.3s;
+        }
+
+        /* Card Styles */
+        .card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 8px 32px rgba(22, 163, 74, 0.08);
+            transform: translateY(-4px);
+        }
+
+        /* Button Styles */
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(22, 163, 74, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 15px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(22, 163, 74, 0.04);
+        }
+
+        /* Tech Tag */
+        .tech-tag {
+            padding: 6px 12px;
+            border-radius: 6px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        /* Section Heading */
+        .section-label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        /* Hero Interactive Canvas */
+        #heroCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        /* Floating Shapes */
+        .floating-shape {
+            position: absolute;
+            border-radius: 20px;
+            opacity: 0.6;
+            transition: transform 0.3s ease;
+        }
+
+        /* Interactive Code Block */
+        .code-block {
+            background: #1e293b;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.15);
+            transform-style: preserve-3d;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .code-block:hover {
+            transform: perspective(1000px) rotateY(-5deg) rotateX(5deg) scale(1.02);
+        }
+
+        .code-header {
+            background: #334155;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .code-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .code-content {
+            padding: 20px;
+            font-family: 'Fira Code', 'Monaco', monospace;
+            font-size: 13px;
+            line-height: 1.7;
+            color: #e2e8f0;
+        }
+
+        .code-content .keyword {
+            color: #c084fc;
+        }
+
+        .code-content .function {
+            color: #60a5fa;
+        }
+
+        .code-content .string {
+            color: #4ade80;
+        }
+
+        .code-content .comment {
+            color: #64748b;
+        }
+
+        .code-content .variable {
+            color: #f472b6;
+        }
+
+        /* Animated Gradient Blob */
+        .gradient-blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: blobFloat 15s ease-in-out infinite;
+        }
+
+        @keyframes blobFloat {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            25% {
+                transform: translate(30px, -30px) scale(1.05);
+            }
+
+            50% {
+                transform: translate(-20px, 20px) scale(0.95);
+            }
+
+            75% {
+                transform: translate(20px, 10px) scale(1.02);
+            }
+        }
+
+        /* Floating Elements Animation */
+        .float-element {
+            animation: floatElement 6s ease-in-out infinite;
+        }
+
+        @keyframes floatElement {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* Interactive Orb */
+        .interactive-orb {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 50%, #15803d 100%);
+            box-shadow: 0 0 60px rgba(22, 163, 74, 0.3), inset 0 0 60px rgba(255, 255, 255, 0.1);
+            transition: transform 0.1s ease-out;
+            cursor: pointer;
+        }
+
+        .orb-ring {
+            position: absolute;
+            border: 2px solid rgba(22, 163, 74, 0.2);
+            border-radius: 50%;
+            animation: ringPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes ringPulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 0.2;
+            }
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+        }
+
+        /* Project Card */
+        .project-card img {
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.03);
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Focus states for accessibility */
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        /* Hamburger Animation */
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Stats Counter Animation */
+        .stat-number {
+            display: inline-block;
+        }
+
+        /* Typing Animation */
+        .typing-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1em;
+            background: #4ade80;
+            margin-left: 2px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            50% {
+                opacity: 1;
+            }
+
+            51%,
+            100% {
+                opacity: 0;
+            }
+        }
+
+        /* Marquee Text */
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .marquee-text {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .marquee-text span {
+            margin: 0 40px;
+        }
+
+        .marquee-text .highlight {
+            color: var(--accent);
+        }
+
+        /* Skill Bars */
+        .skill-bar {
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), #4ade80);
+            border-radius: 4px;
+            width: 0;
+            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Timeline Connector */
+        .timeline-line {
+            position: absolute;
+            left: 23px;
+            top: 60px;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent), transparent);
+        }
+
+        /* Stagger Cards */
+        .stagger-card {
+            opacity: 0;
+            transform: translateY(40px) rotate(2deg);
+        }
+
+        /* Section Number */
+        .section-number {
+            font-size: 120px;
+            font-weight: 800;
+            color: var(--surface);
+            position: absolute;
+            top: -40px;
+            left: -20px;
+            z-index: 0;
+            line-height: 1;
+        }
+
+        /* Hover Lift */
+        .hover-lift {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Animated Border */
+        .animated-border {
+            position: relative;
+        }
+
+        .animated-border::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(90deg, var(--accent), #4ade80, var(--accent));
+            background-size: 200% 100%;
+            border-radius: 18px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s;
+            animation: borderGlow 3s linear infinite;
+        }
+
+        .animated-border:hover::before {
+            opacity: 1;
+        }
+
+        @keyframes borderGlow {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 200% 50%;
+            }
+        }
+
+        /* Icon Bounce */
+        .icon-bounce:hover i {
+            animation: iconBounce 0.5s ease;
+        }
+
+        @keyframes iconBounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        /* Progress Ring */
+        .progress-ring {
+            transform: rotate(-90deg);
+        }
+
+        .progress-ring circle {
+            transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Wave Divider */
+        .wave-divider {
+            position: relative;
+            height: 80px;
+            overflow: hidden;
+        }
+
+        .wave-divider svg {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 80px;
+        }
+
+        /* Glow Effect */
+        .glow-green {
+            box-shadow: 0 0 30px rgba(22, 163, 74, 0.3);
+        }
+
+        /* Creative Work Section Styles */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: auto auto;
+            gap: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .bento-grid {
+                grid-template-columns: repeat(12, 1fr);
+                grid-template-rows: repeat(2, minmax(280px, auto));
+            }
+
+            .bento-item-1 {
+                grid-column: span 7;
+                grid-row: span 1;
+            }
+
+            .bento-item-2 {
+                grid-column: span 5;
+                grid-row: span 1;
+            }
+
+            .bento-item-3 {
+                grid-column: span 5;
+                grid-row: span 1;
+            }
+
+            .bento-item-4 {
+                grid-column: span 7;
+                grid-row: span 1;
+            }
+        }
+
+        .project-showcase {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-showcase:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            border-color: var(--accent);
+        }
+
+        .project-showcase .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-showcase:hover .project-image {
+            transform: scale(1.08);
+        }
+
+        .project-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 100%);
+            opacity: 0.7;
+            transition: opacity 0.4s;
+        }
+
+        .project-showcase:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 24px;
+            transform: translateY(20px);
+            opacity: 0.9;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-showcase:hover .project-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .project-number {
+            font-size: 80px;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.1);
+            position: absolute;
+            top: 16px;
+            left: 20px;
+            line-height: 1;
+            transition: all 0.4s;
+        }
+
+        .project-showcase:hover .project-number {
+            color: rgba(22, 163, 74, 0.3);
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .project-title .arrow {
+            width: 24px;
+            height: 24px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(-45deg) scale(0);
+            transition: transform 0.3s;
+        }
+
+        .project-showcase:hover .project-title .arrow {
+            transform: rotate(-45deg) scale(1);
+        }
+
+        .project-desc {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            max-width: 90%;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .project-tag {
+            padding: 4px 12px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* View All Projects Button */
+        .view-all-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 32px;
+            background: var(--text);
+            color: white;
+            border-radius: 60px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .view-all-btn:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(22, 163, 74, 0.3);
+        }
+
+        .view-all-btn i {
+            transition: transform 0.3s;
+        }
+
+        .view-all-btn:hover i {
+            transform: translateX(4px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Floating Navigation -->
+    <nav class="floating-nav" id="navbar">
+        <div class="px-5 py-3 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-3 group">
+                <div
+                    class="w-10 h-10 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center overflow-hidden shadow-lg shadow-green-600/25 group-hover:shadow-green-600/40 transition-shadow">
+                    <img src="ar logo 2.png" alt="AR" class="w-full h-full object-contain p-1.5">
+                </div>
+                <span
+                    class="text-base font-bold tracking-tight hidden sm:block group-hover:text-green-600 transition-colors">Adi
+                    Raushan</span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8 text-sm">
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#work" class="nav-link">Work</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#process" class="nav-link">Process</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="#contact"
+                    class="btn-primary text-sm py-2.5 px-5 hidden sm:flex rounded-full shadow-lg shadow-green-600/25 hover:shadow-green-600/40">
+                    <span class="relative flex h-2 w-2 mr-1">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+                    </span>
+                    Let's Talk
+                </a>
+                <!-- Hamburger Button -->
+                <button class="hamburger md:hidden" id="hamburgerBtn" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <!-- Decorative Background -->
+        <div class="absolute inset-0 opacity-30"
+            style="background-image: radial-gradient(circle at 1px 1px, #16a34a 1px, transparent 0); background-size: 40px 40px;">
+        </div>
+
+        <div class="flex flex-col items-center justify-center h-full gap-6 relative z-10">
+            <div class="absolute top-6 left-6">
+                <span class="text-sm font-medium text-slate-400">Navigation</span>
+            </div>
+
+            <a href="#services"
+                class="text-3xl font-bold text-slate-900 hover:text-green-600 transition mobile-link flex items-center gap-3">
+                <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                Services
+            </a>
+            <a href="#work"
+                class="text-3xl font-bold text-slate-900 hover:text-green-600 transition mobile-link flex items-center gap-3">
+                <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                Work
+            </a>
+            <a href="#about"
+                class="text-3xl font-bold text-slate-900 hover:text-green-600 transition mobile-link flex items-center gap-3">
+                <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                About
+            </a>
+            <a href="#process"
+                class="text-3xl font-bold text-slate-900 hover:text-green-600 transition mobile-link flex items-center gap-3">
+                <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                Process
+            </a>
+            <a href="#contact" class="btn-primary mt-6 mobile-link rounded-full px-8 py-4 text-lg">
+                <span class="relative flex h-2 w-2 mr-2">
+                    <span
+                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+                </span>
+                Let's Talk
+            </a>
+
+            <!-- Social Links in Mobile -->
+            <div class="absolute bottom-8 flex gap-4">
+                <a href="#"
+                    class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-green-100 hover:text-green-600 transition">
+                    <i data-lucide="linkedin" class="w-5 h-5"></i>
+                </a>
+                <a href="#"
+                    class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-green-100 hover:text-green-600 transition">
+                    <i data-lucide="github" class="w-5 h-5"></i>
+                </a>
+                <a href="#"
+                    class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-green-100 hover:text-green-600 transition">
+                    <i data-lucide="twitter" class="w-5 h-5"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center pt-24 relative overflow-hidden">
+            <!-- Animated Background Blobs -->
+            <div class="gradient-blob bg-green-300" style="top: -100px; right: -100px;"></div>
+            <div class="gradient-blob bg-blue-200" style="bottom: -100px; left: -100px; animation-delay: -5s;"></div>
+            <div class="gradient-blob bg-purple-200"
+                style="top: 50%; left: 50%; transform: translate(-50%, -50%); animation-delay: -10s;"></div>
+
+            <!-- Subtle Grid -->
+            <div class="absolute inset-0 opacity-30"
+                style="background-image: radial-gradient(circle at 1px 1px, #cbd5e1 1px, transparent 0); background-size: 40px 40px;">
+            </div>
+
+            <div class="max-w-6xl mx-auto px-6 py-20 relative z-10">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <!-- Left Content -->
+                    <div>
+                        <!-- Status Badge -->
+                        <div
+                            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 border border-green-200 text-green-700 text-sm font-medium mb-6 float-element">
+                            <span class="relative flex h-2.5 w-2.5">
+                                <span
+                                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+                            </span>
+                            Available for Projects
+                        </div>
+
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight text-slate-900 mb-6"
+                            id="heroTitle">
+                            Frontend Developer<br>
+                            <span class="text-green-600">for Agencies</span>
+                        </h1>
+
+                        <p class="text-lg md:text-xl text-slate-600 mb-8 max-w-lg leading-relaxed">
+                            I turn Figma designs into clean, responsive code. Component systems. Pixel-perfect
+                            execution. Ready for white-label collaboration.
+                        </p>
+
+                        <!-- CTA Buttons -->
+                        <div class="flex flex-wrap gap-4 mb-12">
+                            <a href="#work" class="btn-primary group">
+                                View My Work
+                                <i data-lucide="arrow-right"
+                                    class="w-4 h-4 transition-transform group-hover:translate-x-1"></i>
+                            </a>
+                            <a href="https://calendly.com/adiraushan2k/connect-with-me-on-call"
+                                class="btn-secondary group">
+                                Book a Call
+                                <i data-lucide="calendar" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+
+                        <!-- Quick Stats -->
+                        <div class="flex flex-wrap gap-8 pt-8 border-t border-slate-200">
+                            <div>
+                                <div class="text-3xl font-bold text-slate-900 stat-number" data-target="50">0</div>
+                                <div class="text-sm text-slate-500">Projects Delivered</div>
+                            </div>
+                            <div>
+                                <div class="text-3xl font-bold text-slate-900 stat-number" data-target="12">0</div>
+                                <div class="text-sm text-slate-500">Agency Partners</div>
+                            </div>
+                            <div>
+                                <div class="text-3xl font-bold text-slate-900 stat-number" data-target="95">0</div>
+                                <div class="text-sm text-slate-500">Lighthouse Score</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Side - Interactive Element -->
+                    <div class="relative hidden lg:block">
+                        <!-- Interactive Code Block -->
+                        <div class="code-block" id="codeBlock">
+                            <div class="code-header">
+                                <div class="code-dot bg-red-500"></div>
+                                <div class="code-dot bg-yellow-500"></div>
+                                <div class="code-dot bg-green-500"></div>
+                                <span class="text-slate-400 text-xs ml-3">Component.tsx</span>
+                            </div>
+                            <div class="code-content" id="codeContent">
+                                <div><span class="keyword">const</span> <span class="variable">Component</span> = () =>
+                                    {</div>
+                                <div> <span class="keyword">return</span> (</div>
+                                <div> &lt;<span class="function">div</span> <span
+                                        class="variable">className</span>=<span class="string">"container"</span>&gt;
+                                </div>
+                                <div id="typingLine"> <span class="comment">// Your design, my code</span><span
+                                        class="typing-cursor"></span></div>
+                                <div> &lt;/<span class="function">div</span>&gt;</div>
+                                <div> );</div>
+                                <div>};</div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Elements -->
+                        <div class="absolute -top-6 -right-6 w-20 h-20 bg-green-100 rounded-2xl flex items-center justify-center float-element"
+                            style="animation-delay: -1s;">
+                            <i data-lucide="figma" class="w-10 h-10 text-green-600"></i>
+                        </div>
+
+                        <div class="absolute -bottom-4 -left-8 w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center float-element"
+                            style="animation-delay: -2s;">
+                            <i data-lucide="code-2" class="w-8 h-8 text-blue-600"></i>
+                        </div>
+
+                        <div class="absolute top-1/2 -right-12 w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center float-element"
+                            style="animation-delay: -3s;">
+                            <i data-lucide="smartphone" class="w-7 h-7 text-purple-600"></i>
+                        </div>
+
+                        <!-- Decorative Lines -->
+                        <svg class="absolute -bottom-16 left-0 w-64 h-64 text-slate-200 opacity-50"
+                            viewBox="0 0 200 200">
+                            <path d="M20,100 Q60,60 100,100 T180,100" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-dasharray="5,5">
+                                <animate attributeName="stroke-dashoffset" from="0" to="20" dur="2s"
+                                    repeatCount="indefinite" />
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-400">
+                <span class="text-xs font-medium">Scroll to explore</span>
+                <div class="w-6 h-10 border-2 border-slate-300 rounded-full flex justify-center pt-2">
+                    <div class="w-1.5 h-3 bg-slate-400 rounded-full animate-bounce"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Marquee Divider 1 -->
+        <div class="marquee-container py-4">
+            <div class="marquee-text">
+                <span>React</span><span class="highlight">•</span>
+                <span>Next.js</span><span class="highlight">•</span>
+                <span>TypeScript</span><span class="highlight">•</span>
+                <span>Tailwind CSS</span><span class="highlight">•</span>
+                <span>Figma</span><span class="highlight">•</span>
+                <span>GSAP</span><span class="highlight">•</span>
+                <span>Node.js</span><span class="highlight">•</span>
+                <span>PostgreSQL</span><span class="highlight">•</span>
+                <span>React</span><span class="highlight">•</span>
+                <span>Next.js</span><span class="highlight">•</span>
+                <span>TypeScript</span><span class="highlight">•</span>
+                <span>Tailwind CSS</span><span class="highlight">•</span>
+                <span>Figma</span><span class="highlight">•</span>
+                <span>GSAP</span><span class="highlight">•</span>
+                <span>Node.js</span><span class="highlight">•</span>
+                <span>PostgreSQL</span><span class="highlight">•</span>
+            </div>
+        </div>
+
+        <!-- Services Section -->
+        <section id="services" class="py-24 bg-slate-50 relative overflow-hidden">
+            <span class="section-number">01</span>
+            <div class="max-w-6xl mx-auto px-6 relative z-10">
+                <div class="text-center mb-16">
+                    <p class="section-label">Services</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">What I Deliver</h2>
+                    <p class="text-slate-600 max-w-xl mx-auto">
+                        Focused expertise in frontend development, design implementation, and scalable component
+                        systems.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Service 1 -->
+                    <div class="card p-8 reveal hover-lift animated-border">
+                        <div
+                            class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center text-green-600 mb-6">
+                            <i data-lucide="figma" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-slate-900 mb-3">Design to Code</h3>
+                        <p class="text-slate-600 text-sm mb-4">
+                            Accurate translation of Figma, Sketch, or XD files into production-ready code. Pixel-perfect
+                            results.
+                        </p>
+                        <ul class="space-y-2 text-sm text-slate-500">
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-green-600"></i>
+                                Figma/Sketch/XD
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-green-600"></i>
+                                Responsive implementation
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="card p-8 reveal hover-lift animated-border">
+                        <div
+                            class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center text-green-600 mb-6">
+                            <i data-lucide="component" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-slate-900 mb-3">Component Systems</h3>
+                        <p class="text-slate-600 text-sm mb-4">
+                            Reusable, documented component libraries. Built for maintainability and team handoff.
+                        </p>
+                        <ul class="space-y-2 text-sm text-slate-500">
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-green-600"></i>
+                                React/Next.js components
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-green-600"></i>
+                                Storybook documentation
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="card p-8 reveal hover-lift animated-border">
+                        <div
+                            class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center text-green-600 mb-6">
+                            <i data-lucide="smartphone" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-slate-900 mb-3">Responsive Development</h3>
+                        <p class="text-slate-600 text-sm mb-4">
+                            Mobile-first approach. Tested across devices and browsers. Consistent user experience.
+                        </p>
+                        <ul class="space-y-2 text-sm text-slate-500">
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-green-600"></i>
+                                Cross-browser testing
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-green-600"></i>
+                                Mobile optimization
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 4 -->
+                    <div class="card p-8 reveal hover-lift animated-border">
+                        <div
+                            class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 mb-6">
+                            <i data-lucide="zap" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-slate-900 mb-3">Performance Optimization</h3>
+                        <p class="text-slate-600 text-sm mb-4">
+                            Core Web Vitals optimization. Fast load times. SEO-friendly markup.
+                        </p>
+                        <ul class="space-y-2 text-sm text-slate-500">
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-green-600"></i>
+                                95+ Lighthouse scores
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-green-600"></i>
+                                Image optimization
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 5 -->
+                    <div class="card p-8 reveal hover-lift animated-border">
+                        <div
+                            class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 mb-6">
+                            <i data-lucide="shield-check" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-slate-900 mb-3">White-Label Partnership</h3>
+                        <p class="text-slate-600 text-sm mb-4">
+                            Work under your agency's brand. NDA-ready. Direct communication with your team.
+                        </p>
+                        <ul class="space-y-2 text-sm text-slate-500">
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-green-600"></i>
+                                Slack/Teams integration
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-green-600"></i>
+                                Flexible hours
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 6 -->
+                    <div class="card p-8 reveal hover-lift animated-border">
+                        <div
+                            class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center text-amber-600 mb-6">
+                            <i data-lucide="palette" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-slate-900 mb-3">Brand Identity</h3>
+                        <p class="text-slate-600 text-sm mb-4">
+                            Logo design, color systems, typography. Complete visual identity for clients.
+                        </p>
+                        <ul class="space-y-2 text-sm text-slate-500">
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-green-600"></i>
+                                Logo design
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-green-600"></i>
+                                Style guides
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wave Divider -->
+        <div class="wave-divider bg-slate-50">
+            <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                <path d="M0,40 C320,80 420,0 720,40 C1020,80 1120,0 1440,40 L1440,80 L0,80 Z" fill="white" />
+            </svg>
+        </div>
+
+        <!-- Work Section -->
+        <section id="work" class="py-24 relative overflow-hidden">
+            <!-- Background decoration -->
+            <div class="absolute top-0 right-0 w-96 h-96 bg-green-100 rounded-full filter blur-3xl opacity-30"></div>
+            <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-100 rounded-full filter blur-3xl opacity-30"></div>
+
+            <span class="section-number" style="right: -20px; left: auto;">02</span>
+            <div class="max-w-6xl mx-auto px-6 relative z-10">
+                <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
+                    <div>
+                        <p class="section-label">Portfolio</p>
+                        <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-2">
+                            Selected Work
+                        </h2>
+                        <p class="text-slate-600 max-w-md">
+                            Projects crafted with precision for agencies and forward-thinking brands.
+                        </p>
+                    </div>
+                    <div class="mt-6 md:mt-0">
+                        <span class="text-6xl md:text-8xl font-black text-slate-100">04</span>
+                    </div>
+                </div>
+
+                <!-- Bento Grid -->
+                <div class="bento-grid">
+                    <!-- Project 1 - Large -->
+                    <a href="https://getthem-agency.vercel.app/" target="_blank"
+                        class="project-showcase bento-item-1 reveal min-h-[280px]">
+                        <span class="project-number">01</span>
+                        <img src="agency.png" class="project-image" alt="Agency Website">
+                        <div class="project-overlay"></div>
+                        <div class="project-content">
+                            <h3 class="project-title">
+                                Agency Website
+                                <span class="arrow">
+                                    <i data-lucide="arrow-right" class="w-3 h-3 text-white"></i>
+                                </span>
+                            </h3>
+                            <p class="project-desc">Marketing website for a creative agency with smooth animations.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">React</span>
+                                <span class="project-tag">Tailwind</span>
+                                <span class="project-tag">GSAP</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Project 2 - Small -->
+                    <a href="https://athlynx-gym.vercel.app/" target="_blank"
+                        class="project-showcase bento-item-2 reveal min-h-[280px]">
+                        <span class="project-number">02</span>
+                        <img src="gym.png" class="project-image" alt="Fitness Website">
+                        <div class="project-overlay"></div>
+                        <div class="project-content">
+                            <h3 class="project-title">
+                                Fitness Landing
+                                <span class="arrow">
+                                    <i data-lucide="arrow-right" class="w-3 h-3 text-white"></i>
+                                </span>
+                            </h3>
+                            <p class="project-desc">High-converting landing page for fitness brand.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">JavaScript</span>
+                                <span class="project-tag">Tailwind</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Project 3 - Small -->
+                    <a href="https://la-bella-vita-ten.vercel.app/" target="_blank"
+                        class="project-showcase bento-item-3 reveal min-h-[280px]">
+                        <span class="project-number">03</span>
+                        <img src="cafe-project.png" class="project-image" alt="Restaurant Website">
+                        <div class="project-overlay"></div>
+                        <div class="project-content">
+                            <h3 class="project-title">
+                                Restaurant Website
+                                <span class="arrow">
+                                    <i data-lucide="arrow-right" class="w-3 h-3 text-white"></i>
+                                </span>
+                            </h3>
+                            <p class="project-desc">Elegant Italian restaurant with custom animations.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">JavaScript</span>
+                                <span class="project-tag">GSAP</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Project 4 - Large -->
+                    <a href="https://adiraushan.github.io/Aura-Estate-/" target="_blank"
+                        class="project-showcase bento-item-4 reveal min-h-[280px]">
+                        <span class="project-number">04</span>
+                        <img src="real estate.png" class="project-image" alt="Real Estate Website">
+                        <div class="project-overlay"></div>
+                        <div class="project-content">
+                            <h3 class="project-title">
+                                Real Estate Platform
+                                <span class="arrow">
+                                    <i data-lucide="arrow-right" class="w-3 h-3 text-white"></i>
+                                </span>
+                            </h3>
+                            <p class="project-desc">Property listing website with search filters and detail pages.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">JavaScript</span>
+                                <span class="project-tag">Tailwind</span>
+                                <span class="project-tag">API</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- View All Button -->
+                <div class="text-center mt-12">
+                    <a href="#contact" class="view-all-btn">
+                        Let's Build Yours
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-24 bg-slate-50">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="grid md:grid-cols-2 gap-16 items-center">
+                    <!-- Image -->
+                    <div class="reveal">
+                        <div class="aspect-square rounded-2xl overflow-hidden bg-slate-200 shadow-2xl">
+                            <img src="profile.png" alt="Adi Raushan" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="reveal">
+                        <p class="section-label">About</p>
+                        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
+                            Frontend Developer with Design Sensibility
+                        </h2>
+                        <div class="space-y-4 text-slate-600">
+                            <p>
+                                I specialize in translating design files into clean, maintainable code. My focus:
+                                accuracy, responsiveness, and component architecture.
+                            </p>
+                            <p>
+                                With backend and database knowledge, I understand the full stack—but my strength is in
+                                the frontend. I build interfaces that match the design exactly and perform flawlessly
+                                across devices.
+                            </p>
+                            <p>
+                                I work well with agency teams. Clear communication. Reliable delivery. Code that your
+                                developers can maintain.
+                            </p>
+                        </div>
+
+                        <!-- Skill Bars -->
+                        <div class="mt-8 pt-8 border-t border-slate-200 space-y-4">
+                            <p class="text-sm font-medium text-slate-900 mb-4">Expertise</p>
+                            <div class="space-y-4" id="skillBars">
+                                <div>
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span class="text-slate-700">React / Next.js</span>
+                                        <span class="text-green-600 font-medium">95%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-fill" data-width="95"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span class="text-slate-700">TypeScript</span>
+                                        <span class="text-green-600 font-medium">90%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-fill" data-width="90"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span class="text-slate-700">Design Systems</span>
+                                        <span class="text-green-600 font-medium">88%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-fill" data-width="88"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span class="text-slate-700">Animation (GSAP)</span>
+                                        <span class="text-green-600 font-medium">85%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-fill" data-width="85"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Marquee Divider 2 -->
+        <div class="marquee-container py-4" style="direction: rtl;">
+            <div class="marquee-text" style="animation-direction: reverse;">
+                <span class="highlight">✦</span><span>Design to Code</span>
+                <span class="highlight">✦</span><span>Component Systems</span>
+                <span class="highlight">✦</span><span>Responsive</span>
+                <span class="highlight">✦</span><span>White-Label</span>
+                <span class="highlight">✦</span><span>Fast Delivery</span>
+                <span class="highlight">✦</span><span>Clean Code</span>
+                <span class="highlight">✦</span><span>Design to Code</span>
+                <span class="highlight">✦</span><span>Component Systems</span>
+                <span class="highlight">✦</span><span>Responsive</span>
+                <span class="highlight">✦</span><span>White-Label</span>
+                <span class="highlight">✦</span><span>Fast Delivery</span>
+                <span class="highlight">✦</span><span>Clean Code</span>
+            </div>
+        </div>
+
+        <!-- Process Section -->
+        <section id="process" class="py-24 relative">
+            <span class="section-number" style="right: -20px; left: auto;">03</span>
+            <div class="max-w-4xl mx-auto px-6 relative z-10">
+                <div class="text-center mb-16">
+                    <p class="section-label">Process</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">How I Work</h2>
+                    <p class="text-slate-600 max-w-xl mx-auto">
+                        Structured workflow. Clear communication. Predictable delivery.
+                    </p>
+                </div>
+
+                <div class="space-y-6 relative">
+                    <!-- Timeline Line -->
+                    <div class="timeline-line hidden md:block"></div>
+                    <!-- Step 1 -->
+                    <div class="card p-6 reveal">
+                        <div class="flex gap-6">
+                            <div
+                                class="flex-shrink-0 w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center text-white font-bold">
+                                01
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-slate-900 mb-2">Review & Estimate</h3>
+                                <p class="text-slate-600 text-sm">
+                                    I review your design files and project requirements. You receive a clear scope,
+                                    timeline, and fixed quote within 24 hours.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="card p-6 reveal">
+                        <div class="flex gap-6">
+                            <div
+                                class="flex-shrink-0 w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center text-white font-bold">
+                                02
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-slate-900 mb-2">Development</h3>
+                                <p class="text-slate-600 text-sm">
+                                    I build in iterative sprints with regular staging updates. You see progress on a
+                                    private URL throughout the project.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="card p-6 reveal">
+                        <div class="flex gap-6">
+                            <div
+                                class="flex-shrink-0 w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center text-white font-bold">
+                                03
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-slate-900 mb-2">Review & QA</h3>
+                                <p class="text-slate-600 text-sm">
+                                    Cross-browser testing. Mobile verification. Performance audit. Revisions based on
+                                    your feedback.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="card p-6 reveal">
+                        <div class="flex gap-6">
+                            <div
+                                class="flex-shrink-0 w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center text-white font-bold">
+                                04
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-slate-900 mb-2">Handoff</h3>
+                                <p class="text-slate-600 text-sm">
+                                    Clean code with documentation. Deployed under your brand. I remain available for
+                                    post-launch support.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Work With Me -->
+        <section class="py-24 bg-slate-50">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <p class="section-label">Why Me</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">What Agencies Get</h2>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="text-center reveal card p-8 hover-lift icon-bounce">
+                        <div
+                            class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center text-green-600 mx-auto mb-4 glow-green">
+                            <i data-lucide="check-circle" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-slate-900 mb-2">Reliable Delivery</h3>
+                        <p class="text-slate-600 text-sm">
+                            I meet deadlines. If something changes, you know immediately. No surprises.
+                        </p>
+                    </div>
+
+                    <div class="text-center reveal card p-8 hover-lift icon-bounce">
+                        <div
+                            class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 mx-auto mb-4">
+                            <i data-lucide="code-2" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-slate-900 mb-2">Clean Code</h3>
+                        <p class="text-slate-600 text-sm">
+                            Organized, documented, maintainable. Your team can work with it after handoff.
+                        </p>
+                    </div>
+
+                    <div class="text-center reveal card p-8 hover-lift icon-bounce">
+                        <div
+                            class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center text-purple-600 mx-auto mb-4">
+                            <i data-lucide="message-square" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-slate-900 mb-2">Clear Communication</h3>
+                        <p class="text-slate-600 text-sm">
+                            Responsive on Slack/Teams. Regular updates. I speak your language.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Animated Divider -->
+        <div class="relative h-2 bg-slate-50 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-r from-green-500 via-emerald-400 to-green-500"
+                style="background-size: 200% 100%; animation: borderGlow 3s linear infinite;"></div>
+        </div>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 bg-slate-900 relative overflow-hidden">
+            <!-- Background decoration -->
+            <div class="absolute top-0 right-0 w-96 h-96 bg-green-600/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 w-96 h-96 bg-green-600/10 rounded-full blur-3xl"></div>
+
+            <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+                <p class="text-green-400 text-sm font-semibold uppercase tracking-wider mb-4">Start a Project</p>
+                <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">
+                    Ready to Collaborate?
+                </h2>
+                <p class="text-slate-400 text-lg mb-10 max-w-xl mx-auto">
+                    Send your project details or book a quick call. I respond within 24 hours.
+                </p>
+
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="mailto:adi@webresolv.agency"
+                        class="btn-primary bg-green-600 hover:bg-green-700 text-base px-8 py-4">
+                        Send Project Brief
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                    </a>
+                    <a href="https://calendly.com/adiraushan2k/connect-with-me-on-call"
+                        class="btn-secondary border-slate-700 text-white hover:border-green-500 hover:text-green-400 text-base px-8 py-4">
+                        Schedule a Call
+                        <i data-lucide="calendar" class="w-5 h-5"></i>
+                    </a>
+                </div>
+
+                <!-- Social Links -->
+                <div class="mt-16 pt-8 border-t border-slate-800">
+                    <div class="flex justify-center gap-4">
+                        <a href="https://linkedin.com/in/yourprofile" target="_blank"
+                            class="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center text-slate-400 hover:text-green-400 hover:bg-slate-700 transition">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://github.com/yourusername" target="_blank"
+                            class="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center text-slate-400 hover:text-green-400 hover:bg-slate-700 transition">
+                            <i data-lucide="github" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://twitter.com/yourhandle" target="_blank"
+                            class="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center text-slate-400 hover:text-green-400 hover:bg-slate-700 transition">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-slate-950">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center overflow-hidden">
+                    <img src="ar logo 2.png" alt="AR" class="w-full h-full object-contain p-1">
+                </div>
+                <span class="text-white font-semibold">Adi Raushan</span>
+            </div>
+            <p class="text-slate-500 text-sm">© 2026 All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // GSAP Reveal Animations - Fast & Snappy
+        gsap.registerPlugin(ScrollTrigger);
+
+        const revealElements = document.querySelectorAll('.reveal');
+        revealElements.forEach((el) => {
+            gsap.fromTo(el,
+                { opacity: 0, y: 20 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.35,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: el,
+                        start: "top 88%",
+                        toggleActions: "play none none none"
+                    }
+                }
+            );
+        });
+
+        // Floating Navbar & Scroll Progress
+        const navbar = document.getElementById('navbar');
+        const scrollProgress = document.getElementById('scrollProgress');
+
+        window.addEventListener('scroll', () => {
+            // Navbar scroll state
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            // Update scroll progress bar
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercent = scrollTop / scrollHeight;
+            if (scrollProgress) scrollProgress.style.transform = `scaleX(${scrollPercent})`;
+        });
+
+        // Mobile Menu Toggle
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        hamburgerBtn.addEventListener('click', () => {
+            hamburgerBtn.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburgerBtn.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Interactive Code Block - 3D Tilt
+        const codeBlock = document.getElementById('codeBlock');
+        if (codeBlock) {
+            codeBlock.addEventListener('mousemove', (e) => {
+                const rect = codeBlock.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width - 0.5;
+                const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+                gsap.to(codeBlock, {
+                    rotationY: x * 15,
+                    rotationX: -y * 15,
+                    duration: 0.5,
+                    ease: "power2.out",
+                    transformPerspective: 1000
+                });
+            });
+
+            codeBlock.addEventListener('mouseleave', () => {
+                gsap.to(codeBlock, {
+                    rotationY: 0,
+                    rotationX: 0,
+                    duration: 0.8,
+                    ease: "elastic.out(1, 0.5)"
+                });
+            });
+        }
+
+        // Stats Counter Animation
+        const statNumbers = document.querySelectorAll('.stat-number');
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = parseInt(entry.target.dataset.target);
+                    animateCounter(entry.target, target);
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        statNumbers.forEach(stat => statsObserver.observe(stat));
+
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 40;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + '+';
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current) + '+';
+                }
+            }, 30);
+        }
+
+        // Typing Animation for Code Block
+        const codeLines = [
+            "// Your design, my code",
+            "// Pixel-perfect execution",
+            "// Clean & maintainable",
+            "// Built for scale"
+        ];
+        let currentLineIndex = 0;
+
+        function typeCode() {
+            const typingLine = document.getElementById('typingLine');
+            if (!typingLine) return;
+
+            const text = codeLines[currentLineIndex];
+            typingLine.innerHTML = '      <span class="comment"></span><span class="typing-cursor"></span>';
+            const commentSpan = typingLine.querySelector('.comment');
+
+            let charIndex = 0;
+            const typeInterval = setInterval(() => {
+                if (charIndex < text.length) {
+                    commentSpan.textContent += text[charIndex];
+                    charIndex++;
+                } else {
+                    clearInterval(typeInterval);
+                    setTimeout(() => {
+                        currentLineIndex = (currentLineIndex + 1) % codeLines.length;
+                        typeCode();
+                    }, 2000);
+                }
+            }, 50);
+        }
+
+        // Start typing animation
+        setTimeout(typeCode, 1000);
+
+        // Hero Title Animation
+        gsap.from('#heroTitle', {
+            opacity: 0,
+            y: 40,
+            duration: 1,
+            ease: "power3.out",
+            delay: 0.3
+        });
+
+        // Floating Elements Parallax
+        document.addEventListener('mousemove', (e) => {
+            const floatElements = document.querySelectorAll('.float-element');
+            const mouseX = (e.clientX / window.innerWidth - 0.5) * 20;
+            const mouseY = (e.clientY / window.innerHeight - 0.5) * 20;
+
+            floatElements.forEach((el, index) => {
+                const speed = (index + 1) * 0.5;
+                gsap.to(el, {
+                    x: mouseX * speed,
+                    y: mouseY * speed,
+                    duration: 0.5,
+                    ease: "power2.out"
+                });
+            });
+        });
+
+        // Skill Bars Animation
+        const skillBars = document.getElementById('skillBars');
+        if (skillBars) {
+            const skillObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const fills = skillBars.querySelectorAll('.skill-fill');
+                        fills.forEach((fill, index) => {
+                            setTimeout(() => {
+                                fill.style.width = fill.dataset.width + '%';
+                            }, index * 80);
+                        });
+                        skillObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.3 });
+            skillObserver.observe(skillBars);
+        }
+
+        // Service cards stagger animation - Fast
+        gsap.utils.toArray('.card').forEach((card, index) => {
+            gsap.fromTo(card,
+                { opacity: 0, y: 20, rotate: 0.5 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    rotate: 0,
+                    duration: 0.35,
+                    delay: index * 0.05,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: card,
+                        start: "top 88%",
+                        toggleActions: "play none none none"
+                    }
+                }
+            );
+        });
+    </script>
+</body>
+
+</html>
