@@ -268,9 +268,9 @@
         .project-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 100%);
-            opacity: 0.7;
-            transition: opacity 0.4s;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.3) 60%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
         }
 
         .project-showcase:hover .project-overlay {
@@ -282,10 +282,13 @@
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 24px;
+            padding: 40px 32px;
             transform: translateY(20px);
-            opacity: 0.9;
-            transition: all 0.4s ease;
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
 
         .project-showcase:hover .project-content {
@@ -294,23 +297,70 @@
         }
 
         .project-title {
-            font-size: 1.25rem;
-            font-weight: 700;
+            font-size: 1.5rem;
+            font-weight: 800;
             color: white;
-            margin-bottom: 8px;
+            margin-bottom: 0;
             display: flex;
             align-items: center;
+            gap: 12px;
+            transform: translateY(10px);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+        }
+
+        .project-showcase:hover .project-title {
+            transform: translateY(0);
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
             gap: 8px;
+            transform: translateY(10px);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+        }
+
+        .project-showcase:hover .project-tags {
+            transform: translateY(0);
+            opacity: 1;
         }
 
         .project-tag {
-            padding: 4px 10px;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            font-size: 0.7rem;
+            padding: 6px 14px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            border-radius: 30px;
+            font-size: 0.75rem;
             color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .project-tag:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .project-overlay {
+                opacity: 1;
+                background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.2) 70%, transparent 100%);
+            }
+
+            .project-content,
+            .project-title,
+            .project-tags {
+                transform: translateY(0);
+                opacity: 1;
+                transition-delay: 0s;
+            }
+
+            .project-content {
+                padding: 32px 24px;
+            }
         }
 
         /* Marquee */
@@ -584,11 +634,11 @@
                 <div
                     class="absolute -top-10 md:-top-20 left-1/2 -translate-x-1/2 w-full text-center z-0 pointer-events-none select-none">
                     <h2
-                        class="text-[120px] md:text-[220px] font-bold text-[#0f172a] tracking-tighter whitespace-nowrap leading-none opacity-95">
+                        class="text-[75px] sm:text-[100px] md:text-[220px] font-bold text-[#0f172a] tracking-tighter whitespace-nowrap leading-none opacity-95">
                         About Me</h2>
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-12 relative z-10 pt-32 md:pt-48 items-start">
+                <div class="grid md:grid-cols-2 gap-12 relative z-10 pt-20 sm:pt-24 md:pt-[14rem] items-start">
                     <div
                         class="mt-16 md:mt-12 font-mono text-slate-500 text-sm md:text-base leading-[1.8] space-y-6 max-w-md mx-auto md:mx-0">
                         <p>A tireless developer that works against the clock to squeeze as much learning into a day,</p>
@@ -608,7 +658,7 @@
                 <!-- Foreground Outline Text Trick -->
                 <div
                     class="absolute -top-10 md:-top-20 left-1/2 -translate-x-1/2 w-full text-center z-20 pointer-events-none select-none overflow-hidden h-full">
-                    <h2 class="text-[120px] md:text-[220px] font-bold tracking-tighter whitespace-nowrap leading-none"
+                    <h2 class="text-[75px] sm:text-[100px] md:text-[220px] font-bold tracking-tighter whitespace-nowrap leading-none"
                         style="-webkit-text-stroke: 1.5px rgba(255,255,255,0.7); color: transparent;">About Me</h2>
                 </div>
             </div>
