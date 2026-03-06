@@ -346,6 +346,11 @@
             opacity: 1;
         }
 
+        .project-showcase:hover .project-desc {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
         .project-tag {
             padding: 6px 14px;
             background: rgba(255, 255, 255, 0.1);
@@ -372,7 +377,8 @@
 
             .project-content,
             .project-title,
-            .project-tags {
+            .project-tags,
+            .project-desc {
                 transform: translateY(0);
                 opacity: 1;
                 transition-delay: 0s;
@@ -578,13 +584,12 @@
                         <!-- Profile Pic + Top Name -->
                         <div class="flex items-center gap-4 mb-8 font-mono text-sm tracking-widest text-slate-800">
                             <img src="profile.png" alt="Adi Raushan" class="w-12 h-12 rounded-full object-cover">
-                            <span>Adi Raushan--</span>
+                            <span>Hey, I'm Adi Raushan 👋</span>
                         </div>
 
                         <!-- Main Heading -->
                         <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight text-slate-900 mb-8 relative"
                             id="heroTitle">
-                            Frontend<br>
                             Developer for<br>
                             <span class="relative inline-block z-10">
                                 Agencies
@@ -597,15 +602,17 @@
 
                         <!-- Description -->
                         <p class="text-lg text-slate-500 mb-10 max-w-lg font-mono leading-relaxed lowercase">
-                            A tireless developer that works against the clock to squeeze as much learning into a day,
-                            delivering scalable frontend code.
+                            For the past 3+ years, I've been obsessed with writing clean code and crafting websites that
+                            users actually enjoy using. Whether it's bringing a designer's vision to life or building
+                            the entire experience from scratch, I get genuinely excited about solving problems that
+                            matter.
                         </p>
 
                         <!-- CTA Button -->
                         <div class="flex flex-wrap gap-4 mb-4">
                             <a href="#work"
                                 class="bg-[#0066FF] hover:bg-[#0052cc] text-white font-bold py-4 px-10 text-sm tracking-widest uppercase transition-colors shadow-lg rounded-none">
-                                VIEW RESUME
+                                VIEW WORKS
                             </a>
                         </div>
                     </div>
@@ -646,6 +653,9 @@
             </div>
         </div>
 
+        <!-- Tech Stack Section -->
+
+
         <!-- About Me Section -->
         <section id="about" class="py-32 relative bg-white overflow-hidden">
             <div class="max-w-5xl mx-auto px-6 relative mt-10 md:mt-20">
@@ -658,29 +668,62 @@
                         About Me</h2>
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-12 relative z-10 pt-20 sm:pt-24 md:pt-[14rem] items-start">
+                <div class="grid md:grid-cols-2 gap-12 relative z-10 pt-10 sm:pt-24 md:pt-32 items-start">
                     <div
-                        class="mt-16 md:mt-12 font-mono text-slate-500 text-sm md:text-base leading-[1.8] space-y-6 max-w-md mx-auto md:mx-0">
-                        <p>A tireless developer that works against the clock to squeeze as much learning into a day,</p>
-                        <p>I have explored software development and web development very early into my life. At the age
-                            of 15, I explored DOS operating system, in high school I taught myself Java to build simple
-                            applications.</p>
-                        <p>I specialize in translating sophisticated design files into clean, maintainable,
-                            high-performance web applications. I operate on straightforward principles: code is read out
-                            more often than written; users expect instant load speeds.</p>
+                        class="mt-20 md:mt-10 font-mono text-slate-500 text-sm md:text-base leading-[1.8] space-y-6 max-w-md mx-auto md:mx-0 lowercase">
+                        <p>I started my coding journey early on, teaching myself java to build simple applications. But
+                            it wasn't until I dove into web development that I found my true passion.</p>
+                        <p>For the last 3+ years, I've been helping businesses and agencies bring digital visions to
+                            life. I specialize in taking gorgeous design files and transforming them into clean,
+                            scalable, high-performance web apps that actually work.</p>
                     </div>
                     <div class="relative flex justify-center md:justify-end md:-mt-24">
                         <img src="profile.png" alt="Adi Raushan"
-                            class="w-full max-w-[320px] object-cover relative z-10 border border-slate-100">
+                            class="w-full max-w-[320px] object-cover relative z-10 border border-slate-100 shadow-xl">
                     </div>
                 </div>
 
-                <!-- Foreground Outline Text Trick -->
+                <!-- Beliefs Grid - Full Width -->
                 <div
-                    class="absolute -top-10 md:-top-20 left-1/2 -translate-x-1/2 w-full text-center z-20 pointer-events-none select-none overflow-hidden h-full">
-                    <h2 class="text-[75px] sm:text-[100px] md:text-[220px] font-bold tracking-tighter whitespace-nowrap leading-none"
-                        style="-webkit-text-stroke: 1.5px rgba(255,255,255,0.7); color: transparent;">About Me</h2>
+                    class="mt-16 md:mt-24 pt-12 border-t border-slate-200 relative z-10 font-mono text-slate-500 text-sm md:text-base leading-[1.8] lowercase">
+                    <p class="font-semibold text-slate-800 mb-8 text-center md:text-left">here's what I believe:</p>
+                    <ul class="grid md:grid-cols-2 gap-x-12 gap-y-8">
+                        <li class="flex gap-4 items-start">
+                            <span class="text-blue-500 font-bold shrink-0 text-lg leading-none mt-1">--</span>
+                            <span><strong class="text-slate-800 font-semibold block mb-1">code is read more often than
+                                    written</strong> I architect cleanly, ensuring any developer can jump in and
+                                understand the structure instantly.</span>
+                        </li>
+                        <li class="flex gap-4 items-start">
+                            <span class="text-blue-500 font-bold shrink-0 text-lg leading-none mt-1">--</span>
+                            <span><strong class="text-slate-800 font-semibold block mb-1">speed matters</strong> users
+                                expect instant load times, and I deliver them with optimized assets and modern
+                                frameworks.</span>
+                        </li>
+                        <li class="flex gap-4 items-start">
+                            <span class="text-blue-500 font-bold shrink-0 text-lg leading-none mt-1">--</span>
+                            <span><strong class="text-slate-800 font-semibold block mb-1">design deserves
+                                    respect</strong>
+                                pixel-perfect structure isn't obsessive, it's the standard I hold every build to.</span>
+                        </li>
+                        <li class="flex gap-4 items-start">
+                            <span class="text-blue-500 font-bold shrink-0 text-lg leading-none mt-1">--</span>
+                            <span><strong class="text-slate-800 font-semibold block mb-1">reliability is
+                                    everything</strong> when we work together, it gets done right, communicated clearly,
+                                and on time.</span>
+                        </li>
+                    </ul>
+                    <p class="mt-12 text-center md:text-left italic text-slate-400">every project is an opportunity to
+                        learn something new and create something worth using.</p>
                 </div>
+            </div>
+
+            <!-- Foreground Outline Text Trick -->
+            <div
+                class="absolute -top-10 md:-top-20 left-1/2 -translate-x-1/2 w-full text-center z-20 pointer-events-none select-none overflow-hidden h-full">
+                <h2 class="text-[75px] sm:text-[100px] md:text-[220px] font-bold tracking-tighter whitespace-nowrap leading-none"
+                    style="-webkit-text-stroke: 1.5px rgba(255,255,255,0.7); color: transparent;">About Me</h2>
+            </div>
             </div>
         </section>
 
@@ -700,16 +743,15 @@
                     <p class="section-label">Services</p>
                     <h2
                         class="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight text-slate-900 mb-8 relative inline-block">
-                        What I <span class="relative inline-block z-10">Deliver
+                        What I Can <span class="relative inline-block z-10">Do For You
                             <svg class="absolute bottom-1 -left-2 w-[110%] h-4 -z-10 text-yellow-300"
                                 viewBox="0 0 100 20" preserveAspectRatio="none">
                                 <path d="M0,15 Q50,0 100,5 Q50,20 0,15 Z" fill="currentColor" />
                             </svg>
                         </span>
                     </h2>
-                    <p class="text-lg text-slate-500 mb-10 max-w-lg mx-auto font-mono leading-relaxed lowercase">Focused
-                        expertise in frontend development, design
-                        implementation, and scalable component systems.</p>
+                    <p class="text-lg text-slate-500 mb-10 max-w-lg mx-auto font-mono leading-relaxed lowercase">I don't
+                        just build websites—I build solutions tailored to your specific needs.</p>
                 </div>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <div class="card p-8 reveal">
@@ -718,9 +760,21 @@
                             <i data-lucide="figma" class="w-6 h-6"></i>
                         </div>
                         <h3 class="text-xl font-semibold text-slate-900 mb-3">Design to Code</h3>
-                        <p class="text-slate-500 text-sm mb-4 font-mono leading-relaxed lowercase">Accurate translation
-                            of Figma or Sketch files into fast,
-                            production-ready frontend code.</p>
+                        <p class="text-slate-500 text-sm mb-4 font-mono leading-relaxed lowercase"><strong
+                                class="text-slate-700 block mb-1">turn ideas into reality</strong>Got a Figma design?
+                            I'll transform it into clean, production-ready code that performs beautifully across all
+                            devices. Pixel-perfect translation, optimized for speed.</p>
+                    </div>
+                    <div class="card p-8 reveal">
+                        <div
+                            class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center text-amber-600 mb-6">
+                            <i data-lucide="layout" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-slate-900 mb-3">Full-Stack Development</h3>
+                        <p class="text-slate-500 text-sm mb-4 font-mono leading-relaxed lowercase"><strong
+                                class="text-slate-700 block mb-1">frontend to backend, covered</strong>I can handle
+                            everything—React interfaces, Next.js applications, Node.js APIs, and database design. Build
+                            your entire product without juggling multiple developers.</p>
                     </div>
                     <div class="card p-8 reveal">
                         <div
@@ -728,49 +782,43 @@
                             <i data-lucide="component" class="w-6 h-6"></i>
                         </div>
                         <h3 class="text-xl font-semibold text-slate-900 mb-3">Component Systems</h3>
-                        <p class="text-slate-500 text-sm mb-4 font-mono leading-relaxed lowercase">Reusable, documented
-                            component libraries built for
-                            long-term project maintainability.</p>
-                    </div>
-                    <div class="card p-8 reveal">
-                        <div
-                            class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 mb-6">
-                            <i data-lucide="smartphone" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-slate-900 mb-3">Responsive Layouts</h3>
-                        <p class="text-slate-500 text-sm mb-4 font-mono leading-relaxed lowercase">Mobile-first
-                            methodology ensuring consistent user
-                            experiences across devices.</p>
+                        <p class="text-slate-500 text-sm mb-4 font-mono leading-relaxed lowercase"><strong
+                                class="text-slate-700 block mb-1">code that scales</strong>I create reusable,
+                            well-documented component libraries that your team can build on for months to come. Less
+                            repetition, more velocity.</p>
                     </div>
                     <div class="card p-8 reveal">
                         <div
                             class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 mb-6">
                             <i data-lucide="zap" class="w-6 h-6"></i>
                         </div>
-                        <h3 class="text-xl font-semibold text-slate-900 mb-3">Performance Focus</h3>
-                        <p class="text-slate-500 text-sm mb-4 font-mono leading-relaxed lowercase">Optimized Core Web
-                            Vitals, ultra-fast TTFB, and lean
-                            production bundles.</p>
+                        <h3 class="text-xl font-semibold text-slate-900 mb-3">Performance Optimization</h3>
+                        <p class="text-slate-500 text-sm mb-4 font-mono leading-relaxed lowercase"><strong
+                                class="text-slate-700 block mb-1">make it fast</strong>Slow websites lose users. I
+                            obsess over Core Web Vitals, optimize images, minimize bundles, and ensure your site loads
+                            instantly. Your users will notice.</p>
+                    </div>
+                    <div class="card p-8 reveal">
+                        <div
+                            class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 mb-6">
+                            <i data-lucide="smartphone" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-slate-900 mb-3">Responsive Design</h3>
+                        <p class="text-slate-500 text-sm mb-4 font-mono leading-relaxed lowercase"><strong
+                                class="text-slate-700 block mb-1">works everywhere</strong>Mobile-first development
+                            means your site looks and functions beautifully whether users are on a phone, tablet, or
+                            desktop. No compromises.</p>
                     </div>
                     <div class="card p-8 reveal">
                         <div
                             class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 mb-6">
                             <i data-lucide="shield-check" class="w-6 h-6"></i>
                         </div>
-                        <h3 class="text-xl font-semibold text-slate-900 mb-3">White-Label Partner</h3>
-                        <p class="text-slate-500 text-sm mb-4 font-mono leading-relaxed lowercase">NDA-ready engineering
-                            under your agency's name, engaging
-                            seamlessly with your teams.</p>
-                    </div>
-                    <div class="card p-8 reveal">
-                        <div
-                            class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center text-amber-600 mb-6">
-                            <i data-lucide="layout" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-slate-900 mb-3">Full-Stack Capability</h3>
-                        <p class="text-slate-500 text-sm mb-4 font-mono leading-relaxed lowercase">While frontend is my
-                            core, my Node/SQL knowledge allows
-                            me to integrate APIs reliably.</p>
+                        <h3 class="text-xl font-semibold text-slate-900 mb-3">White-Label Partnership</h3>
+                        <p class="text-slate-500 text-sm mb-4 font-mono leading-relaxed lowercase"><strong
+                                class="text-slate-700 block mb-1">your name, my expertise</strong>Working with an
+                            agency? I can be your dedicated technical partner, operating under NDA and seamlessly
+                            integrating with your team.</p>
                     </div>
                 </div>
             </div>
@@ -790,13 +838,15 @@
                     <p class="section-label">Portfolio</p>
                     <h2
                         class="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight text-slate-900 mb-8 relative inline-block">
-                        Selected <span class="relative inline-block z-10">Work
+                        Work I'm <span class="relative inline-block z-10">Proud Of
                             <svg class="absolute bottom-1 -left-2 w-[110%] h-5 -z-10 text-yellow-300"
                                 viewBox="0 0 100 20" preserveAspectRatio="none">
                                 <path d="M0,15 Q50,0 100,5 Q50,20 0,15 Z" fill="currentColor" />
                             </svg>
                         </span>
                     </h2>
+                    <p class="text-lg text-slate-500 mb-10 max-w-lg mx-auto font-mono leading-relaxed lowercase">Here's
+                        a selection of recent projects where I've brought ideas to life.</p>
 
                     <!-- Filters -->
                     <div class="flex flex-wrap justify-center gap-3" id="projectFilters">
@@ -818,11 +868,15 @@
                         <div class="project-content">
                             <h3 class="project-title">GetThem Agency <i data-lucide="arrow-right"
                                     class="w-4 h-4 text-white"></i></h3>
-                            <div class="project-tags mt-2">
+                            <div class="project-tags mt-1">
                                 <span class="project-tag">React</span>
                                 <span class="project-tag">Tailwind</span>
                                 <span class="project-tag">GSAP</span>
                             </div>
+                            <p
+                                class="text-slate-300 text-sm mt-3 leading-relaxed lowercase opacity-0 transition-all duration-500 delay-300 transform translate-y-4 project-desc">
+                                Modern agency website built with React, animations powered by GSAP, styled with
+                                Tailwind. Fast, beautiful, results-driven design.</p>
                         </div>
                     </a>
 
@@ -834,10 +888,14 @@
                         <div class="project-content">
                             <h3 class="project-title">Athlynx Fitness <i data-lucide="arrow-right"
                                     class="w-4 h-4 text-white"></i></h3>
-                            <div class="project-tags mt-2">
+                            <div class="project-tags mt-1">
                                 <span class="project-tag">JavaScript</span>
                                 <span class="project-tag">Tailwind</span>
                             </div>
+                            <p
+                                class="text-slate-300 text-sm mt-3 leading-relaxed lowercase opacity-0 transition-all duration-500 delay-300 transform translate-y-4 project-desc">
+                                Clean, responsive fitness brand website with smooth interactions and excellent
+                                performance.</p>
                         </div>
                     </a>
 
@@ -849,10 +907,14 @@
                         <div class="project-content">
                             <h3 class="project-title">La Bella Vita Dining <i data-lucide="arrow-right"
                                     class="w-4 h-4 text-white"></i></h3>
-                            <div class="project-tags mt-2">
+                            <div class="project-tags mt-1">
                                 <span class="project-tag">JavaScript</span>
                                 <span class="project-tag">GSAP</span>
                             </div>
+                            <p
+                                class="text-slate-300 text-sm mt-3 leading-relaxed lowercase opacity-0 transition-all duration-500 delay-300 transform translate-y-4 project-desc">
+                                Restaurant site with engaging animations and intuitive navigation that makes diners want
+                                to book a table.</p>
                         </div>
                     </a>
 
@@ -864,40 +926,51 @@
                         <div class="project-content">
                             <h3 class="project-title">Aura Real Estate <i data-lucide="arrow-right"
                                     class="w-4 h-4 text-white"></i></h3>
-                            <div class="project-tags mt-2">
-                                <span class="project-tag">Web App</span>
+                            <div class="project-tags mt-1">
+                                <span class="project-tag">React</span>
                                 <span class="project-tag">Tailwind</span>
                             </div>
+                            <p
+                                class="text-slate-300 text-sm mt-3 leading-relaxed lowercase opacity-0 transition-all duration-500 delay-300 transform translate-y-4 project-desc">
+                                A fully functional real estate web app where users can browse, filter, and explore
+                                properties with ease.</p>
                         </div>
                     </a>
 
                     <!-- Project 5 -->
-                    <a href="#" target="_blank" class="project-showcase reveal lg:col-span-2" data-category="ecommerce">
-                        <img src="https://images.unsplash.com/photo-1607082350899-7e105aa886ae?auto=format&fit=crop&q=80&w=800"
-                            alt="E-Commerce Store" loading="lazy">
+                    <a href="https://adiraushan.github.io/Shree-Manoj-jew/" target="_blank"
+                        class="project-showcase reveal lg:col-span-2" data-category="ecommerce">
+                        <img src="shree manoj.png" alt="E-Commerce Store" loading="lazy">
                         <div class="project-overlay"></div>
                         <div class="project-content">
-                            <h3 class="project-title">Modern E-Commerce <i data-lucide="arrow-right"
+                            <h3 class="project-title">Shree Manoj Jewellers <i data-lucide="arrow-right"
                                     class="w-4 h-4 text-white"></i></h3>
-                            <div class="project-tags mt-2">
-                                <span class="project-tag">Next.js</span>
-                                <span class="project-tag">Shopify</span>
+                            <div class="project-tags mt-1">
+                                <span class="project-tag">React</span>
+                                <span class="project-tag">Tailwind</span>
                             </div>
+                            <p
+                                class="text-slate-300 text-sm mt-3 leading-relaxed lowercase opacity-0 transition-all duration-500 delay-300 transform translate-y-4 project-desc">
+                                jewellery website with smooth animations and responsive design and real time updates</p>
                         </div>
                     </a>
 
                     <!-- Project 6 -->
-                    <a href="#" target="_blank" class="project-showcase reveal" data-category="app">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800"
-                            alt="SaaS Dashboard" loading="lazy">
+                    <a href="https://dental-xi-henna.vercel.app/" target="_blank" class="project-showcase reveal"
+                        data-category="app">
+                        <img src="dentist - project.png" alt="SaaS Dashboard" loading="lazy">
                         <div class="project-overlay"></div>
                         <div class="project-content">
-                            <h3 class="project-title">SaaS Analytics Dashboard <i data-lucide="arrow-right"
+                            <h3 class="project-title">DR Smith Dental <i data-lucide="arrow-right"
                                     class="w-4 h-4 text-white"></i></h3>
-                            <div class="project-tags mt-2">
-                                <span class="project-tag">React</span>
-                                <span class="project-tag">Recharts</span>
+                            <div class="project-tags mt-1">
+                                <span class="project-tag">HTML CSS</span>
+                                <span class="project-tag">JavaScript Tailwind</span>
                             </div>
+                            <p
+                                class="text-slate-300 text-sm mt-3 leading-relaxed lowercase opacity-0 transition-all duration-500 delay-300 transform translate-y-4 project-desc">
+                                A modern, responsive dental clinic website featuring smooth animations, an intuitive
+                                interface, and a professional design that builds trust and encourages bookings.</p>
                         </div>
                     </a>
                 </div>
@@ -920,7 +993,7 @@
                     <p class="section-label">My Path to Quality</p>
                     <h2
                         class="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight text-slate-900 mb-8 relative inline-block">
-                        How I <span class="relative inline-block z-10">Work
+                        How We'll <span class="relative inline-block z-10">Work Together
                             <svg class="absolute bottom-1 -left-2 w-[110%] h-4 -z-10 text-yellow-300"
                                 viewBox="0 0 100 20" preserveAspectRatio="none">
                                 <path d="M0,15 Q50,0 100,5 Q50,20 0,15 Z" fill="currentColor" />
@@ -928,38 +1001,41 @@
                         </span>
                     </h2>
                     <p class="text-lg text-slate-500 mb-10 max-w-lg mx-auto font-mono leading-relaxed lowercase">
-                        Organized, transparent, and completely focused on
-                        ensuring that every milestone is hit cleanly and on time.</p>
+                        I keep things simple, organized, and focused on delivering real results.</p>
                 </div>
 
                 <div class="process-grid">
                     <div class="card p-6 reveal relative shadow-sm hover:shadow-lg">
                         <span class="text-blue-600 font-extrabold text-5xl mb-4 block opacity-20">01</span>
-                        <h3 class="text-xl font-bold text-slate-800 mb-2">Discovery</h3>
-                        <p class="text-slate-500 text-sm font-mono leading-relaxed lowercase">We dissect your agency
-                            requirements, define the MVP, clear
-                            roadblocks, and formulate a solid strategy.</p>
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">Let's Talk</h3>
+                        <p class="text-slate-500 text-sm font-mono leading-relaxed lowercase"><strong
+                                class="text-slate-700 block mb-1">discovery</strong>We start with a real conversation.
+                            What's your goal? What's the problem you're solving? What's your timeline? No assumptions,
+                            just clarity.</p>
                     </div>
                     <div class="card p-6 reveal relative shadow-sm hover:shadow-lg">
                         <span class="text-blue-600 font-extrabold text-5xl mb-4 block opacity-20">02</span>
-                        <h3 class="text-xl font-bold text-slate-800 mb-2">Blueprint</h3>
-                        <p class="text-slate-500 text-sm font-mono leading-relaxed lowercase">Figma designs are analyzed
-                            to build a scalable component
-                            taxonomy and define layout constraints.</p>
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">Planning</h3>
+                        <p class="text-slate-500 text-sm font-mono leading-relaxed lowercase"><strong
+                                class="text-slate-700 block mb-1">blueprint</strong>Once I understand the vision, I
+                            create a technical roadmap. We define the MVP, identify potential roadblocks, and build a
+                            strategy that works.</p>
                     </div>
                     <div class="card p-6 reveal relative shadow-sm hover:shadow-lg">
                         <span class="text-blue-600 font-extrabold text-5xl mb-4 block opacity-20">03</span>
-                        <h3 class="text-xl font-bold text-slate-800 mb-2">Development</h3>
-                        <p class="text-slate-500 text-sm font-mono leading-relaxed lowercase">Daily staging updates,
-                            pixel-perfect development using modern
-                            JS frameworks, zero spaghetti code.</p>
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">Building</h3>
+                        <p class="text-slate-500 text-sm font-mono leading-relaxed lowercase"><strong
+                                class="text-slate-700 block mb-1">development</strong>Here's where the magic happens.
+                            You'll see progress constantly—daily updates, staging versions you can test, and code that's
+                            clean enough to maintain for years.</p>
                     </div>
                     <div class="card p-6 reveal relative shadow-sm hover:shadow-lg">
                         <span class="text-blue-600 font-extrabold text-5xl mb-4 block opacity-20">04</span>
-                        <h3 class="text-xl font-bold text-slate-800 mb-2">Launch</h3>
-                        <p class="text-slate-500 text-sm font-mono leading-relaxed lowercase">Strict QA, Lighthouse
-                            optimizations applied, and full
-                            documentation handed over for complete agency independence.</p>
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">Perfect & Launch</h3>
+                        <p class="text-slate-500 text-sm font-mono leading-relaxed lowercase"><strong
+                                class="text-slate-700 block mb-1">qa & optimization</strong>Before anything goes live, I
+                            run it through strict quality checks. Lighthouse optimizations, performance audits, and full
+                            documentation to set you up for success.</p>
                     </div>
                 </div>
             </div>
@@ -976,19 +1052,18 @@
 
             <div class="max-w-6xl mx-auto px-6 relative z-10">
                 <div class="text-center mb-16 reveal">
-                    <p class="section-label">Agency Value</p>
+                    <p class="section-label">Partnership</p>
                     <h2
                         class="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight text-slate-900 mb-8 relative inline-block">
-                        What Sets Me <span class="relative inline-block z-10">Apart
+                        Why I'm <span class="relative inline-block z-10">Different
                             <svg class="absolute bottom-1 -left-2 w-[110%] h-4 -z-10 text-yellow-300"
                                 viewBox="0 0 100 20" preserveAspectRatio="none">
                                 <path d="M0,15 Q50,0 100,5 Q50,20 0,15 Z" fill="currentColor" />
                             </svg>
                         </span>
                     </h2>
-                    <p class="text-lg text-slate-500 mb-10 max-w-lg mx-auto font-mono leading-relaxed lowercase">More
-                        than just code—I bring agency-tailored understanding
-                        and reliability to the table, solving your scaling issues.</p>
+                    <p class="text-lg text-slate-500 mb-10 max-w-lg mx-auto font-mono leading-relaxed lowercase">It's
+                        not just about writing code—it's about partnership.</p>
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-8">
@@ -996,40 +1071,50 @@
                         <div class="text-blue-600 flex-shrink-0"><i data-lucide="shield-check" class="w-8 h-8"></i>
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold text-slate-900 mb-2">Zero Flake Reliability</h3>
-                            <p class="text-slate-500 text-sm font-mono leading-relaxed lowercase">When you hand off a
-                                project to me, consider it done. I
-                                honor deadlines strictly and communicate proactively. No ghosting, no excuses.</p>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2">Reliability You Can Trust</h3>
+                            <p class="text-slate-500 text-sm font-mono leading-relaxed lowercase">No flaky deadlines, no
+                                ghosting, no excuses. When I commit to a project, it's done—on time, with quality that
+                                speaks for itself. You get proactive communication every step of the way.</p>
                         </div>
                     </div>
                     <div class="card p-8 reveal border-l-4 border-l-blue-500 flex gap-6">
                         <div class="text-blue-600 flex-shrink-0"><i data-lucide="braces" class="w-8 h-8"></i></div>
                         <div>
-                            <h3 class="text-lg font-bold text-slate-900 mb-2">Engineering Standard</h3>
-                            <p class="text-slate-500 text-sm font-mono leading-relaxed lowercase">I don't just "make it
-                                work." I build utilizing robust
-                                architectural patterns so your in-house developers can easily understand and maintain
-                                it.</p>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2">Code That Lasts</h3>
+                            <p class="text-slate-500 text-sm font-mono leading-relaxed lowercase">I don't just make it
+                                work. I build using proven architectural patterns and best practices so that your
+                                team—or future developers—can easily understand, maintain, and scale what I create.</p>
                         </div>
                     </div>
                     <div class="card p-8 reveal border-l-4 border-l-purple-500 flex gap-6">
                         <div class="text-purple-600 flex-shrink-0"><i data-lucide="eye" class="w-8 h-8"></i></div>
                         <div>
-                            <h3 class="text-lg font-bold text-slate-900 mb-2">Design-Accurate Vision</h3>
-                            <p class="text-slate-500 text-sm font-mono leading-relaxed lowercase">Translating a Figma
-                                canvas requires an eye for spacing,
-                                typography, and micro-interactions. My results mirror your designer's original intent
-                                natively.</p>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2">Design Accuracy</h3>
+                            <p class="text-slate-500 text-sm font-mono leading-relaxed lowercase">Translating a
+                                designer's vision requires an eye for detail. I obsess over spacing, typography,
+                                animations, and micro-interactions. The result is code that mirrors your designer's
+                                intent perfectly.</p>
                         </div>
                     </div>
                     <div class="card p-8 reveal border-l-4 border-l-amber-500 flex gap-6">
-                        <div class="text-amber-600 flex-shrink-0"><i data-lucide="clock" class="w-8 h-8"></i></div>
+                        <div class="text-amber-600 flex-shrink-0"><i data-lucide="zap" class="w-8 h-8"></i></div>
                         <div>
-                            <h3 class="text-lg font-bold text-slate-900 mb-2">Speed to Market</h3>
-                            <p class="text-slate-500 text-sm font-mono leading-relaxed lowercase">By utilizing proven
-                                component flows and cutting-edge build
-                                tools, I consistently shrink dev cycles allowing your agency to take on more clients.
-                            </p>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2">Speed & Efficiency</h3>
+                            <p class="text-slate-500 text-sm font-mono leading-relaxed lowercase">I've built enough
+                                projects to know the fastest path forward. Proven component patterns, optimized build
+                                tools, and an organized workflow mean I get high-quality work done faster—so you can
+                                take on more or ship sooner.</p>
+                        </div>
+                    </div>
+                    <div
+                        class="card p-8 reveal border-l-4 border-l-indigo-500 flex gap-6 md:col-span-2 lg:col-span-1 lg:col-start-1 lg:col-end-3 xl:col-span-2 w-full max-w-3xl mx-auto md:w-auto">
+                        <div class="text-indigo-600 flex-shrink-0"><i data-lucide="database" class="w-8 h-8"></i></div>
+                        <div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2">Full-Stack Capabilities</h3>
+                            <p class="text-slate-500 text-sm font-mono leading-relaxed lowercase">While frontend is my
+                                core strength, I'm comfortable with Node.js, Express, and SQL. I can handle API
+                                integration, backend optimization, and database design. You don't always need multiple
+                                developers.</p>
                         </div>
                     </div>
                 </div>
@@ -1052,7 +1137,7 @@
                     <p class="section-label">Feedback</p>
                     <h2
                         class="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight text-slate-900 mb-8">
-                        Client Testimonials</h2>
+                        Kind Words From Real Clients</h2>
                 </div>
 
                 <div class="testimonial-grid">
@@ -1064,10 +1149,9 @@
                                 class="w-5 h-5 fill-current"></i><i data-lucide="star"
                                 class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i>
                         </div>
-                        <p class="text-slate-500 mb-6 italic font-mono leading-relaxed lowercase">"Adi is arguably one
-                            of the best frontend developers we’ve
-                            contracted. Absolutely insane attention to detail and delivered our project a week ahead of
-                            schedule."</p>
+                        <p class="text-slate-500 mb-6 italic font-mono leading-relaxed lowercase">"Adi is honestly one
+                            of the best frontend developers I've ever worked with. His attention to detail is insane,
+                            and he delivered our project a full week ahead of schedule. That's rare."</p>
                         <div class="flex items-center gap-4">
                             <div
                                 class="w-12 h-12 bg-slate-200 rounded-full overflow-hidden flex items-center justify-center font-bold text-slate-500">
@@ -1086,9 +1170,9 @@
                                 class="w-5 h-5 fill-current"></i><i data-lucide="star"
                                 class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i>
                         </div>
-                        <p class="text-slate-500 mb-6 italic font-mono leading-relaxed lowercase">"He completely rescued
-                            a botched React application we
-                            inherited. His code is phenomenally clean and our Lighthouse scores shot up instantly."</p>
+                        <p class="text-slate-500 mb-6 italic font-mono leading-relaxed lowercase">"We inherited a messy
+                            React application. Adi completely cleaned it up and restructured it beautifully. Our
+                            Lighthouse scores went from terrible to amazing overnight. He's a pro."</p>
                         <div class="flex items-center gap-4">
                             <div
                                 class="w-12 h-12 bg-slate-200 rounded-full overflow-hidden flex items-center justify-center font-bold text-slate-500">
@@ -1107,9 +1191,9 @@
                                 class="w-5 h-5 fill-current"></i><i data-lucide="star"
                                 class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i>
                         </div>
-                        <p class="text-slate-500 mb-6 italic font-mono leading-relaxed lowercase">"I've worked with many
-                            white-label partners, and Adi is by
-                            far the most communicative. Our clients love the final results every single time."</p>
+                        <p class="text-slate-500 mb-6 italic font-mono leading-relaxed lowercase">"I've worked with a
+                            lot of white-label partners, and Adi is by far the most communicative and reliable. Our
+                            clients absolutely love the final results. He's now our go-to developer."</p>
                         <div class="flex items-center gap-4">
                             <div
                                 class="w-12 h-12 bg-slate-200 rounded-full overflow-hidden flex items-center justify-center font-bold text-slate-500">
@@ -1141,24 +1225,24 @@
 
             <div class="max-w-4xl mx-auto px-6 text-center relative z-10 mt-10 md:mt-20">
                 <span
-                    class="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-blue-500/30 text-blue-400 text-sm font-semibold uppercase tracking-wider mb-8 bg-blue-500/10 backdrop-blur-sm">Start
-                    a Project</span>
+                    class="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-blue-500/30 text-blue-400 text-sm font-semibold uppercase tracking-wider mb-8 bg-blue-500/10 backdrop-blur-sm">Ready
+                    to start a project?</span>
                 <h2
                     class="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight text-white mb-8">
-                    Let's Discuss Your Needs</h2>
-                <p class="text-lg text-slate-400 mb-10 max-w-lg mx-auto font-mono leading-relaxed lowercase">Send over
-                    your project details, designs, or
-                    brief. I'll provide an accurate estimation and technical strategy within 24 hours.</p>
+                    Let's Create Something Great</h2>
+                <p class="text-lg text-slate-400 mb-10 max-w-lg mx-auto font-mono leading-relaxed lowercase">Tell me
+                    about your project—what you're building, what challenges you're facing, and what success looks like.
+                    I'll provide you with an accurate estimate and a clear technical strategy within 24 hours.</p>
 
                 <div class="flex flex-wrap justify-center gap-4">
                     <a href="mailto:adi@webresolv.agency"
                         class="btn-primary bg-[#0066FF] hover:bg-[#0052cc] text-base px-8 py-4 text-white hover:text-white border-0">
-                        Send Project Details <i data-lucide="mail" class="w-5 h-5"></i>
+                        Send me your project details <i data-lucide="arrow-right" class="w-5 h-5 ml-1"></i>
                     </a>
                     <a href="https://calendly.com/adiraushan2k/connect-with-me-on-call"
                         class="btn-secondary border-slate-700 text-white hover:border-blue-500 hover:text-blue-400 text-base px-8 py-4"
                         style="background: rgba(255,255,255,0.05)">
-                        Schedule a Call <i data-lucide="calendar" class="w-5 h-5"></i>
+                        Schedule a quick call <i data-lucide="arrow-right" class="w-5 h-5 ml-1"></i>
                     </a>
                 </div>
             </div>
@@ -1176,7 +1260,8 @@
                 </div>
                 <div class="text-center md:text-left">
                     <h3 class="text-white text-xl font-bold">Adi Raushan</h3>
-                    <p class="text-slate-500 text-sm mt-1">Frontend Engineering Partner</p>
+                    <p class="text-slate-500 text-sm mt-1">Full-Stack Developer. Design-to-Code Specialist. Quality
+                        Advocate.</p>
                 </div>
             </div>
 
@@ -1202,7 +1287,7 @@
         </div>
 
         <div class="mt-8 pt-8 border-t border-slate-900 text-center text-slate-600 text-sm">
-            © 2026 Adi Raushan. Built for speed and scalability.
+            © 2026 Adi Raushan. Built for speed, scalability, and genuinely solving problems.
         </div>
     </footer>
 
