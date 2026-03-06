@@ -102,6 +102,26 @@
             height: 32px;
         }
 
+        @media (max-width: 768px) {
+            body {
+                cursor: auto;
+            }
+
+            a,
+            button,
+            .btn-primary,
+            .btn-secondary,
+            .filter-btn,
+            .project-showcase,
+            [onclick] {
+                cursor: pointer !important;
+            }
+
+            #custom-cursor {
+                display: none !important;
+            }
+        }
+
         h1,
         h2,
         h3,
